@@ -85,10 +85,9 @@ export class UserInfo {
 //     const joined2020 = new Date(userActivity.createdAt).getFullYear() == 2020
 //       ? 1
 //       : 0;
-    if ((Date(durationTime).getFullYear() + 10 ) > Date(userActivity.createdAt).getFullYear()){
-      const ancientAccount = 1;
-    }else{
-      const ancientAccount = 0;
+    const ancientAccount = 0;
+    if ((Date(durationTime).getUTCFullYear() + 10 ) > Date(userActivity.createdAt).getFullYear()){
+       ancientAccount = 1;
     }
     const joined2020 = !ancientAccount;
       
