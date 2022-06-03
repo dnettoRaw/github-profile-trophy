@@ -82,15 +82,14 @@ export class UserInfo {
     const durationYear = new Date(durationTime).getUTCFullYear() - 1970;
 //     const ancientAccount =
 //       new Date(userActivity.createdAt).getFullYear() <= 2010 ? 1 : 0;
-//     const joined2020 = new Date(userActivity.createdAt).getFullYear() == 2020
-//       ? 1
-//       : 0;
-    if ((Date(durationTime).getFullYear() + 10 ) > Date(userActivity.createdAt).getFullYear()){
-      const ancientAccount = 1;
-    }else{
-      const ancientAccount = 0;
+    const joined2020 = new Date(userActivity.createdAt).getFullYear() == 2020
+      ? 1
+      : 0;
+    var ancientAccount = 0;
+    if ((new Date(durationTime).getUTCFullYear() + 10 ) > new Date(userActivity.createdAt).getFullYear()){
+       ancientAccount = 1;
     }
-    const joined2020 = !ancientAccount;
+//     const joined2020 = !ancientAccount;
       
       
     this.totalCommits = totalCommits;
@@ -102,7 +101,7 @@ export class UserInfo {
     this.totalRepositories = userRepository.repositories.totalCount;
     this.languageCount = languages.size;
     this.durationYear = durationYear;
-    this.ancientAccount = ancientAccount;
+    this.ancientAccount = (ancientAccount ? 1:0);
     this.joined2020 = joined2020;
   }
 }
